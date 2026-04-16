@@ -1,31 +1,30 @@
 # Excel to Markdown Converter
 
-エクセルファイル（.xlsx, .xls）をMarkdown形式のテーブルに変換するブラウザ完結型のツールです。
+A browser-based tool that converts Excel files (.xlsx, .xls) into Markdown tables.
 
-## 特徴
+## Features
 
-- **プライバシーに配慮**: すべての処理はブラウザ上で行われるため、ファイルがサーバーにアップロードされることはありません。
-- **ドラッグ＆ドロップ対応**: ファイルをドロップするだけで即座に変換が始まります。
-- **プレビュー機能**: 変換後のMarkdownをその場で確認できます。
-- **一括ダウンロード**: 変換されたMarkdownをファイルとしてダウンロード可能です。
-- **複数シート対応**: 複数のシートが含まれる場合、それぞれのシートを個別のセクションとして変換します。
-- **モダンなUI**: GitHub風のダークモードを採用したレスポンシブデザイン。
+- **Privacy-Focused**: All processing is done locally in the browser; files are never uploaded to a server.
+- **Drag & Drop Support**: Simply drop a file to start the conversion instantly.
+- **Live Preview**: See the converted Markdown results immediately.
+- **Downloadable Output**: Save the converted Markdown as a file.
+- **Multi-Sheet Support**: Each sheet in an Excel workbook is converted into its own section.
+- **Modern UI**: Responsive design with a GitHub-inspired dark mode.
 
-## 使い方
+## How to Use
 
-1. `index.html`をブラウザで開きます。
-2. 変換したいエクセルファイルをドラッグ＆ドロップするか、エリアをクリックして選択します。
-3. プレビューエリアに表示されたMarkdownを確認します。
-4. 「.mdをダウンロード」ボタンをクリックして保存します。
+1. Open `index.html` in your web browser.
+2. Drag and drop your Excel file, or click the area to select one.
+3. Review the converted Markdown in the preview area.
+4. Click the "Download .md" button to save your file.
 
-## 技術スタック
+## Tech Stack
 
 - HTML5
 - CSS3 (Vanilla CSS)
 - JavaScript (Vanilla JS)
-- [SheetJS (xlsx)](https://github.com/SheetJS/sheetjs) - エクセルファイルの解析に使用
+- [SheetJS (xlsx)](https://github.com/SheetJS/sheetjs) - Used for parsing Excel files.
 
-## ライセンス
+## License
 
 MIT License
-
