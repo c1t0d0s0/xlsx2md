@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XLSX to Markdown Converter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>XLSX to Markdown</h1>
+            <p>エクセルファイルをMarkdown形式に変換します（ブラウザ完結型）</p>
+        </header>
+
+        <main>
+            <div id="drop-zone" class="drop-zone">
+                <p>ファイルをドラッグ＆ドロップ、またはクリックして選択</p>
+                <input type="file" id="file-input" accept=".xlsx, .xls" hidden>
+            </div>
+
+            <div id="preview-container" class="preview-container hidden">
+                <div class="preview-header">
+                    <h2>プレビュー</h2>
+                    <button id="download-btn" class="btn btn-primary">.mdをダウンロード</button>
+                </div>
+                <textarea id="markdown-preview" readonly></textarea>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 cuio.net</p>
+        </footer>
+    </div>
+
+    <!-- SheetJS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
