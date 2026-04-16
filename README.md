@@ -1,4 +1,4 @@
-# XLSX to Markdown Converter
+# Excel to Markdown Converter
 
 エクセルファイル（.xlsx, .xls）をMarkdown形式のテーブルに変換するブラウザ完結型のツールです。
 
