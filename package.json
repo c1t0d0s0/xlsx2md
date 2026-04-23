@@ -1,0 +1,52 @@
+{
+  "name": "xlsx2md",
+  "private": true,
+  "version": "1.0.0",
+  "description": "XLSX to Markdown — Electron desktop shell",
+  "author": "c1t0d0s0",
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win --x64",
+    "dist:portable": "electron-builder --win portable --x64",
+    "dist:dir": "electron-builder --win --x64 --dir"
+  },
+  "build": {
+    "appId": "net.cuio.xlsx2md",
+    "productName": "xlsx2md",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "electron/**/*",
+      "index.html",
+      "script.js",
+      "style.css"
+    ],
+    "win": {
+      "signAndEditExecutable": false,
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "devDependencies": {
+    "electron": "^41.3.0",
+    "electron-builder": "^25.1.8"
+  }
+}

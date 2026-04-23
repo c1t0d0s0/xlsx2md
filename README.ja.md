@@ -24,6 +24,54 @@
 - CSS3 (Vanilla CSS)
 - JavaScript (Vanilla JS)
 - [SheetJS (xlsx)](https://github.com/SheetJS/sheetjs) - エクセルファイルの解析に使用
+- [Electron](https://www.electronjs.org/) - Windows 向けデスクトップ版（任意）
+
+## Windows アプリ（.exe）の作成方法
+
+Electron でラップした Windows 用のインストーラーおよびポータブル版をビルドできます。
+
+### 前提条件
+
+- [Node.js](https://nodejs.org/)（`npm` を含む）
+
+### 手順
+
+1. ターミナルで本プロジェクトのディレクトリ（`package.json` がある場所）に移動します。
+2. 依存関係をインストールします。
+
+   ```bash
+   npm install
+   ```
+
+3. Windows x64 向けにビルドします。
+
+   ```bash
+   npm run dist
+   ```
+
+4. 成果物は `dist/` に出力されます。
+
+   - **`xlsx2md Setup <version>.exe`** — NSIS インストーラー（インストール先を選べます）。
+   - **`xlsx2md <version>.exe`** — ポータブル版の実行ファイル。
+   - **`win-unpacked/`** — 展開されたアプリ一式（動作確認用）。
+
+インストーラーを作らず、展開フォルダだけ欲しい場合は次を実行します。
+
+```bash
+npm run dist:dir
+```
+
+**ポータブル版の .exe だけ**を作る場合（NSIS インストーラーは生成しません）は次を実行します。
+
+```bash
+npm run dist:portable
+```
+
+### GitHub Releases での配布
+
+`v` で始まるタグ（例: `v1.0.1`）をリモートにプッシュすると、GitHub Actions の [`.github/workflows/release.yml`](.github/workflows/release.yml) が実行されます。Windows 向けの**ポータブル版** `.exe` がビルドされ、そのタグに対応する **GitHub Release** に成果物として添付されます。ビルド時のみ、ランナー上で `package.json` / `package-lock.json` のバージョンがタグに合わせて更新されます（リポジトリにはコミットされません）。
+
+パッケージ化したアプリでも、`index.html` で指定している SheetJS は CDN から読み込まれるため、変換機能の初回利用時などにネットワーク接続が必要になることがあります。
 
 ## ライセンス
 
