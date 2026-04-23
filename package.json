@@ -1,7 +1,7 @@
 {
   "name": "xlsx2md",
   "private": true,
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "XLSX to Markdown — Electron desktop shell",
   "author": "c1t0d0s0",
   "main": "electron/main.js",
@@ -9,7 +9,8 @@
     "start": "electron .",
     "dist": "electron-builder --win --x64",
     "dist:portable": "electron-builder --win portable --x64",
-    "dist:dir": "electron-builder --win --x64 --dir"
+    "dist:dir": "electron-builder --win --x64 --dir",
+    "build:icon": "node scripts/make-windows-icon.cjs"
   },
   "build": {
     "appId": "net.cuio.xlsx2md",
@@ -21,9 +22,11 @@
       "electron/**/*",
       "index.html",
       "script.js",
-      "style.css"
+      "style.css",
+      "build/icon.ico"
     ],
     "win": {
+      "icon": "build/icon.ico",
       "signAndEditExecutable": false,
       "target": [
         {
@@ -47,6 +50,8 @@
   },
   "devDependencies": {
     "electron": "^41.3.0",
-    "electron-builder": "^26.8.1"
+    "electron-builder": "^26.8.1",
+    "png-to-ico": "^2.1.8",
+    "pngjs": "^7.0.0"
   }
 }
