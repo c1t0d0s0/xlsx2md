@@ -26,13 +26,14 @@ A browser-based tool that converts Excel files (.xlsx, .xls) into Markdown table
 - [SheetJS (xlsx)](https://github.com/SheetJS/sheetjs) - Used for parsing Excel files.
 - [Electron](https://www.electronjs.org/) - Optional desktop shell for Windows.
 
-## Building the Windows app (.exe)
+## Building the Desktop App (Windows / macOS)
 
-The repository includes an Electron wrapper so you can build installable and portable Windows executables.
+The repository includes an Electron wrapper so you can build installable executables for Windows and macOS.
 
 ### Prerequisites
 
 - [Node.js](https://nodejs.org/) (includes `npm`)
+- For macOS builds, a Mac is recommended or required.
 
 ### Steps
 
@@ -43,19 +44,42 @@ The repository includes an Electron wrapper so you can build installable and por
    npm install
    ```
 
-3. Build Windows x64 artifacts:
+3. Generate the application icons (required before building):
 
+   ```bash
+   npm run build:icon
+   ```
+
+4. Build the app for your platform:
+
+   **For both Windows and macOS (if on Mac):**
    ```bash
    npm run dist
    ```
 
-4. Find the outputs under `dist/`:
+   **For Windows only:**
+   ```bash
+   npm run dist:win
+   ```
 
-   - **`xlsx2md Setup <version>.exe`** — NSIS installer (you can choose the install folder).
+   **For macOS only:**
+   ```bash
+   npm run dist:mac
+   ```
+
+5. Find the outputs under `dist/`:
+
+   **Windows Outputs:**
+   - **`xlsx2md Setup <version>.exe`** — NSIS installer.
    - **`xlsx2md <version>.exe`** — Portable executable.
-   - **`win-unpacked/`** — Unpacked app folder (useful for quick testing).
+   - **`win-unpacked/`** — Unpacked app folder for Windows.
 
-To produce only the unpacked folder without installers:
+   **macOS Outputs:**
+   - **`xlsx2md-<version>.dmg`** — macOS DMG installer.
+   - **`xlsx2md-<version>-mac.zip`** — macOS app archive.
+   - **`mac/`** — Unpacked folder containing `.app` for macOS.
+
+To produce only the unpacked folder without installers (for Windows):
 
 ```bash
 npm run dist:dir

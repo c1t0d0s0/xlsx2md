@@ -1,6 +1,6 @@
 /**
- * Reads scripts/icon-master.png, center-crops to a square, resizes to 256×256,
- * then writes build/icon.ico (multi-size) via png-to-ico.
+ * Reads scripts/icon-master.png, center-crops to a square, resizes to 512x512 and 256x256,
+ * then writes build/icon.png and build/icon.ico (multi-size) via png-to-ico.
  */
 const fs = require("fs");
 const path = require("path");
@@ -9,16 +9,16 @@ const pngToIco = require("png-to-ico");
 
 const root = path.join(__dirname, "..");
 const input = path.join(__dirname, "icon-master.png");
-const output = path.join(root, "build", "icon.ico");
+const outputIco = path.join(root, "build", "icon.ico");
+const outputPng = path.join(root, "build", "icon.png");
 
-function centerCropSquare256(buf) {
+function centerCropSquare(buf, outSize) {
   const src = PNG.sync.read(buf);
   const w = src.width;
   const h = src.height;
   const side = Math.min(w, h);
   const sx = Math.floor((w - side) / 2);
   const sy = Math.floor((h - side) / 2);
-  const outSize = 256;
   const dst = new PNG({ width: outSize, height: outSize });
 
   for (let y = 0; y < outSize; y++) {
@@ -41,13 +41,17 @@ function centerCropSquare256(buf) {
 }
 
 const raw = fs.readFileSync(input);
-const square256 = centerCropSquare256(raw);
+const square512 = centerCropSquare(raw, 512);
+const square256 = centerCropSquare(raw, 256);
+
+fs.mkdirSync(path.dirname(outputPng), { recursive: true });
+fs.writeFileSync(outputPng, square512);
+console.log("Wrote", outputPng);
 
 pngToIco(square256)
   .then((icoBuf) => {
-    fs.mkdirSync(path.dirname(output), { recursive: true });
-    fs.writeFileSync(output, icoBuf);
-    console.log("Wrote", output);
+    fs.writeFileSync(outputIco, icoBuf);
+    console.log("Wrote", outputIco);
   })
   .catch((err) => {
     console.error(err);
