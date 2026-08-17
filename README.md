@@ -11,7 +11,7 @@ A browser-based and lightweight desktop tool that converts Excel files (.xlsx, .
 - **Downloadable Output**: Save the converted Markdown as a file.
 - **Multi-Sheet Support**: Each sheet in an Excel workbook is converted into its own section.
 - **Modern UI**: Responsive design with a GitHub-inspired dark mode.
-- **Lightweight Desktop App**: Built with [Tauri v2](https://tauri.app/) for small binary sizes (~5-15MB) and fast startup.
+- **Lightweight Desktop App**: Built with [Tauri v2](https://tauri.app/) for small binary sizes (~5-15MB) and fast startup across Windows, macOS, and Linux.
 
 ## How to Use (Web)
 
@@ -42,6 +42,9 @@ sudo apt update && sudo apt install -y libwebkit2gtk-4.1-dev build-essential cur
 - WebView2 (installed by default on Windows 10/11)
 - Visual Studio C++ Build Tools (MSVC)
 
+**macOS Prerequisites:**
+- Xcode Command Line Tools (`xcode-select --install`)
+
 ### Development
 
 Run the desktop application in development mode with live reload:
@@ -59,8 +62,9 @@ npm run tauri:build
 ```
 
 Find the generated installers under:
-- `src-tauri/target/release/bundle/nsis/` (NSIS `.exe` installer)
-- `src-tauri/target/release/bundle/msi/` (MSI `.msi` installer)
+- `src-tauri/target/release/bundle/nsis/` (Windows NSIS `.exe` installer)
+- `src-tauri/target/release/bundle/msi/` (Windows MSI `.msi` installer)
+- `src-tauri/target/release/bundle/dmg/` (macOS DMG installer)
 
 ### Icon Generation
 
@@ -72,7 +76,7 @@ npm run build:icon
 
 ### Automated Releases via GitHub Actions
 
-Pushing a tag starting with `v` (e.g. `v1.2.0`) triggers [`.github/workflows/release.yml`](.github/workflows/release.yml), automatically building the Tauri Windows application and publishing the artifacts to a GitHub Release.
+Pushing a tag starting with `v` (e.g. `v2.0.0`) triggers [`.github/workflows/release.yml`](.github/workflows/release.yml), automatically building the Tauri Windows and macOS applications and publishing the artifacts to a GitHub Release.
 
 ## License
 

@@ -11,7 +11,7 @@
 - **一括ダウンロード**: 変換されたMarkdownをファイルとしてダウンロード可能です。
 - **複数シート対応**: 複数のシートが含まれる場合、それぞれのシートを個別のセクションとして変換します。
 - **モダンなUI**: GitHub風のダークモードを採用したレスポンシブデザイン。
-- **軽量デスクトップアプリ**: [Tauri v2](https://tauri.app/) を採用し、小型バイナリ（約5〜15MB）と高速起動を実現。
+- **軽量デスクトップアプリ**: [Tauri v2](https://tauri.app/) を採用し、小型バイナリ（約5〜15MB）と高速起動を Windows / macOS / Linux で実現。
 
 ## 使い方（Web版）
 
@@ -42,6 +42,9 @@ sudo apt update && sudo apt install -y libwebkit2gtk-4.1-dev build-essential cur
 - WebView2（Windows 10/11 は標準搭載）
 - Visual Studio C++ Build Tools (MSVC)
 
+**macOS の場合:**
+- Xcode Command Line Tools (`xcode-select --install`)
+
 ### 開発モード
 
 開発用ウィンドウを起動して動作確認します:
@@ -59,8 +62,9 @@ npm run tauri:build
 ```
 
 ビルド成果物は以下に出力されます:
-- `src-tauri/target/release/bundle/nsis/`（NSIS インストーラー `.exe`）
-- `src-tauri/target/release/bundle/msi/`（MSI インストーラー `.msi`）
+- `src-tauri/target/release/bundle/nsis/`（Windows NSIS インストーラー `.exe`）
+- `src-tauri/target/release/bundle/msi/`（Windows MSI インストーラー `.msi`）
+- `src-tauri/target/release/bundle/dmg/`（macOS DMG インストーラー）
 
 ### アプリアイコンの再生成
 
@@ -72,7 +76,7 @@ npm run build:icon
 
 ### GitHub Releases での自動リリース
 
-`v` で始まるタグ（例: `v1.2.0`）をリモートにプッシュすると、GitHub Actions の [`.github/workflows/release.yml`](.github/workflows/release.yml) が自動実行され、Windows 向けの Tauri インストーラーがビルドされて **GitHub Release** に自動添付されます。
+`v` で始まるタグ（例: `v2.0.0`）をリモートにプッシュすると、GitHub Actions の [`.github/workflows/release.yml`](.github/workflows/release.yml) が自動実行され、Windows および macOS 向けの Tauri インストーラーがビルドされて **GitHub Release** に自動添付されます。
 
 ## ライセンス
 
