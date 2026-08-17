@@ -1,0 +1,19 @@
+[package]
+name = "xlsx2md"
+version = "2.0.0"
+description = "XLSX to Markdown desktop converter"
+authors = ["c1t0d0s0"]
+edition = "2021"
+
+[lib]
+name = "xlsx2md_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-opener = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
